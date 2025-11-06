@@ -1,0 +1,83 @@
+body {
+    overflow-x: hidden;
+    font-family: arial, helvetica, sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+#scoring {
+    display: flex;
+    align-items: center;
+}
+
+#scoring p {
+    margin: 5px;
+}
+
+#seperator {
+    font-size: 10px;
+}
+
+#game-area {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+#play-background {
+    height: 150px;
+    width: 600px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    align-self: center;
+    border-radius: 10px;
+    background-color: #232323;
+    position: absolute;
+}
+
+#play-area {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-self: center;
+    height: 150px;
+    width: 600px;
+    border-radius: 10px;
+    z-index: 20;
+}
+
+#play-area img {
+    margin: 10px;
+    width: 90px;
+    border-radius: 5px;
+}
+
+#play-button {
+    width: 100px;
+    padding: 10px;
+    align-self: center;
+}
+
+#hand-area {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: center;
+    justify-self: end;
+    justify-content: center;
+    margin: 30px;
+    width: 1000px;
+}
+
+#hand-area img {
+    width: 80px;
+    border-radius: 5px;
+    margin-left: -30px;
+}
+
+.dragged {
+    position: absolute;
+}

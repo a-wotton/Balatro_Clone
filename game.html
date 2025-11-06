@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playing Cards</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer type="module" src="js/cards.js"></script>
+    <script defer type="module" src="js/hands.js"></script>
+    <script defer type = module src="js/main.js"></script>
+</head>
+<body>
+    <button id="start-button">Start Game</button>
+    <h1 id="hand-type"></h1>
+    <div id="scoring">
+        <p id="mult">0</p>
+        <p id="seperator">X</p>
+        <p id="points">0</p>
+    </div>
+    <p id="total">0</p> 
+    <section id="game-area">
+        <div id="play-background"></div>
+        <ul id="play-area">
+            <!-- Played cards are inserted here -->
+        </ul>
+        <div id="discard-background"></div>
+        <ul id="discard-area">
+            <!-- Discarded cards are inserted here -->
+        </ul>
+        <button id="play-button" class="hidden">Play</button>
+        <ul id="hand-area">
+            <!-- Player's hand shows here -->
+        </ul>
+    </section>
+</body>
+</html>
