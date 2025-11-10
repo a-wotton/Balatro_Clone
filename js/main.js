@@ -3,11 +3,14 @@ import * as handFunctions from "./hands.js";
 
 const startButton = document.querySelector('#start-button');
 const playButton = document.querySelector('#play-button');
+const discardButton = document.querySelector('#discard-button')
 const multDisplay = document.querySelector('#mult');
 const pointsDisplay = document.querySelector('#points');
 const totalDisplay = document.querySelector('#total');
 const played = [];
 const hand = [];
+const discarded = [];
+const removed = [];
 const handArea = document.querySelector('#hand-area');
 const playArea = document.querySelector('#play-area');
 const discardArea = document.querySelector('#discard-area')
@@ -15,8 +18,9 @@ const handType = document.querySelector('#hand-type');
 let cardX = 0, cardY = 0, lastX = 0, lastY = 0;
 let isDragged = false;
 let isOver = false;
+let isOverDiscard = false;
 let suit = '';
-let value = ''; 
+let value = '';  
 let movedCard = '';
 
 function populateHTML(cardArray, area) {
@@ -36,15 +40,19 @@ function populateHTML(cardArray, area) {
     checkHand();
 }
 
-function startGame() {
+function handleDraw() {
     // Takes an amount of cards from the deck using a random index and places them in the hand
     while(hand.length < 10) {
-        const randomCard = Math.floor(Math.random() * (cards.length));
-        const removedCard = cards.splice(randomCard, 1);
-        hand.push(removedCard[0]);
-    }
-    // Sorts the cards in hand in descending order
+    const randomCard = Math.floor(Math.random() * (cards.length));
+    const removedCard = cards.splice(randomCard, 1);
+    hand.push(removedCard[0]);
+}
+  // Sorts the cards in hand in descending order
     hand.sort((a, b) => b.value - a.value);
+}
+
+function startGame() {
+    handleDraw();
     // Creates a list item for each card that is moved to the hand
     populateHTML(hand, handArea);
     startButton.classList.add('hidden');
@@ -56,6 +64,11 @@ function handleReset () {
     } else {
         playButton.classList.add('hidden');
     }
+     if (discarded.length > 0) {
+        discardButton.classList.remove('hidden');
+     } else {
+        discardButton.classList.add('hidden');
+     }
     handType.textContent="";
     played.length > 0 ? handType.textContent="High Card" : handType.textContent = "";
 }
@@ -96,15 +109,31 @@ function drop() {
         played.sort((a, b) => b.value - a.value);
         playArea.innerHTML = "";
         handArea.innerHTML = "";
+        discardArea.innerHTML = "";
         populateHTML(played, playArea);
         populateHTML(hand, handArea);
+        populateHTML(discarded, discardArea);
+        // The elseif handles discards rather than plays
+    } else if(isOverDiscard && isDragged == true && discarded.length < 5 && played.length == 0) {
+        const droppedCard = hand.findIndex(card => card.suit == suit && card.value == value);
+        const removedCard = hand.splice(droppedCard, 1);
+        discarded.push(removedCard[0]);
+        discarded.sort((a, b) => b.value - a.value);
+        playArea.innerHTML = "";
+        handArea.innerHTML = "";
+        discardArea.innerHTML = "";
+        populateHTML(played, playArea);
+        populateHTML(hand, handArea);
+        populateHTML(discarded, discardArea);
     } else {
         // This quickly resets the hand when a card is dropped outside the play area, allowing the cards to realign properly
         setTimeout(() => {
             playArea.innerHTML = "";
             handArea.innerHTML = "";
+            discardArea.innerHTML = "";
             populateHTML(played, playArea);
             populateHTML(hand, handArea);
+            populateHTML(discarded, discardArea);
         }, 10);
     }
         if(movedCard) {
@@ -116,23 +145,25 @@ function drop() {
 }
 }
 
-function removePlayed(e) {
+function removePlayed(e, removedFrom) {
     const cardToRemove = e.target.parentNode;
     suit = cardToRemove.dataset.suit;
     value = cardToRemove.dataset.value;
-    const removalIndex = played.findIndex(card => card.suit == suit && card.value == value);
+    const removalIndex = removedFrom.findIndex(card => card.suit == suit && card.value == value);
     // This if statement prevents the function from running if the unordered list is selected (its index happens to be -1)
     if(removalIndex == -1) {
         return;
     }
-    const removedCard = played.splice(removalIndex, 1);
+    const removedCard = removedFrom.splice(removalIndex, 1);
     hand.push(removedCard[0]);
     hand.sort((a, b) => b.value - a.value);
-    played.sort((a, b) => b.value - a.value);
+    removedFrom.sort((a, b) => b.value - a.value);
     playArea.innerHTML = "";
     handArea.innerHTML = "";
+    discardArea.innerHTML = "";
     populateHTML(played, playArea);
     populateHTML(hand, handArea);
+    populateHTML(discarded, discardArea);
 }
 
 function checkHand() {
@@ -148,13 +179,26 @@ function handlePlay() {
     handFunctions.playHand(totalDisplay);
 }
 
+function handleRemove(array) {
+    removed.push(...array);
+    array.splice(0, 5);
+    handleDraw();
+    populateHTML(played, playArea);
+    populateHTML(hand, handArea);
+    populateHTML(discarded, discardArea);
+}
+
 startButton.addEventListener('click', startGame);
 handArea.addEventListener('mousedown', grab);
 document.addEventListener('mousemove', drag);
 document.addEventListener('mouseup', drop);
 playArea.addEventListener('mouseenter', () => {isOver = true;});
 playArea.addEventListener('mouseleave', () => {isOver = false;});
-playArea.addEventListener('click', removePlayed);
+playArea.addEventListener('click', (e) => {removePlayed(e, played)});
+discardArea.addEventListener('mouseenter', () => {isOverDiscard = true;});
+discardArea.addEventListener('mouseleave', () => {isOverDiscard = false;});
+discardArea.addEventListener('click', (e) => {removePlayed(e, discarded)});
 playButton.addEventListener('click', handlePlay);
+discardButton.addEventListener('click', () => {handleRemove(discarded)});
 
 export default played;

@@ -1,6 +1,8 @@
 body {
     overflow-x: hidden;
     font-family: arial, helvetica, sans-serif;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 .hidden {
@@ -18,6 +20,11 @@ body {
 
 #seperator {
     font-size: 10px;
+}
+
+#total {
+    display: flex;
+    justify-content: space-between;
 }
 
 #game-area {
@@ -55,9 +62,64 @@ body {
     border-radius: 5px;
 }
 
-#play-button {
-    width: 100px;
+#discard-container {
+    display: flex;
+    flex-direction: column;
+    align-itms: center;
+    height: 300px;
+}
+
+#discard-button {
+    margin: 0;
+    margin-bottom: 5px;
+    align-self: center;
+    color: #fff;
+    background-color: red;
+    border: none;
     padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 280px;
+}
+
+#discard-button:hover {
+    cursor: pointer;
+}
+
+#discard-area {
+    list-style: none;
+    display: flex;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 400px;
+    height: 80px;
+    border-radius: 5px;
+    align-self: center;
+    align-items: center;
+    z-index: 20;
+    top: 320px;
+}
+
+#discard-area img {
+    border-radius: 5px;
+    width: 50px;
+    margin-right: 10px;
+}
+
+#discard-background {
+    position: absolute;
+    width: 400px;
+    height: 80px;
+    border-radius: 5px;
+    align-self: center;
+    border: 2px dashed red;
+    top: 320px;
+}
+
+#play-button {
+    width: 80px;
+    padding: 5px;
     align-self: center;
 }
 
