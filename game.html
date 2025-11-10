@@ -17,16 +17,22 @@
         <p id="seperator">X</p>
         <p id="points">0</p>
     </div>
-    <p id="total">0</p> 
+    <div id="total">
+        <p>0</p> 
+        <p>Deck: 52/52</p>
+    </div>
     <section id="game-area">
         <div id="play-background"></div>
         <ul id="play-area">
             <!-- Played cards are inserted here -->
         </ul>
-        <div id="discard-background"></div>
-        <ul id="discard-area">
-            <!-- Discarded cards are inserted here -->
-        </ul>
+        <div id="discard-container">
+            <div id="discard-background"></div>
+            <ul id="discard-area">
+                <!-- Discarded cards are inserted here -->
+            </ul>
+            <button id="discard-button" class="hidden">Discard</button>
+        </div>
         <button id="play-button" class="hidden">Play</button>
         <ul id="hand-area">
             <!-- Player's hand shows here -->
