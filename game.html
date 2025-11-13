@@ -10,17 +10,19 @@
     <script defer type = module src="js/main.js"></script>
 </head>
 <body>
-    <button id="start-button">Start Game</button>
-    <h1 id="hand-type"></h1>
-    <div id="scoring">
-        <p id="mult">0</p>
-        <p id="seperator">X</p>
-        <p id="points">0</p>
-    </div>
-    <div id="total">
-        <p>0</p> 
-        <p>Deck: 52/52</p>
-    </div>
+    <section id="counts">
+        <div id="scoring">
+            <h1 id="hand-type">Hand Type</h1>
+            <p id="mult">0</p>
+            <p id="seperator">X</p>
+            <p id="points">0</p>
+            <p id="total">0</p> 
+        </div>
+        <div id="total-container">
+            <p>Deck: <span id="deck-length">52/52</span></p>
+        </div>
+    </section>
+
     <section id="game-area">
         <div id="play-background"></div>
         <ul id="play-area">
