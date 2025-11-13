@@ -11,18 +11,22 @@ body {
 
 #scoring {
     display: flex;
-    align-items: center;
+    flex-direction: column;
 }
 
 #scoring p {
     margin: 5px;
 }
 
+#mult {
+    flex-row: 2;
+}
+
 #seperator {
     font-size: 10px;
 }
 
-#total {
+#total-container {
     display: flex;
     justify-content: space-between;
 }
@@ -41,7 +45,7 @@ body {
     margin-bottom: 16px;
     align-self: center;
     border-radius: 10px;
-    background-color: #232323;
+    border: 4px solid #232323;
     position: absolute;
 }
 
@@ -121,6 +125,8 @@ body {
     width: 80px;
     padding: 5px;
     align-self: center;
+    background-color: #232323;
+    color: #fff;
 }
 
 #hand-area {

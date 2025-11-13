@@ -1,12 +1,12 @@
 import cards from "./cards.js";
 import * as handFunctions from "./hands.js";
 
-const startButton = document.querySelector('#start-button');
 const playButton = document.querySelector('#play-button');
 const discardButton = document.querySelector('#discard-button')
 const multDisplay = document.querySelector('#mult');
 const pointsDisplay = document.querySelector('#points');
 const totalDisplay = document.querySelector('#total');
+const deckLength = document.querySelector('#deck-length');
 const played = [];
 const hand = [];
 const discarded = [];
@@ -22,6 +22,13 @@ let isOverDiscard = false;
 let suit = '';
 let value = '';  
 let movedCard = '';
+
+function startGame() {
+    handleDraw();
+    // Creates a list item for each card that is moved to the hand
+    populateHTML(hand, handArea);
+    startButton.classList.add('hidden');
+}
 
 function populateHTML(cardArray, area) {
     cardArray.forEach(card => {
@@ -42,20 +49,14 @@ function populateHTML(cardArray, area) {
 
 function handleDraw() {
     // Takes an amount of cards from the deck using a random index and places them in the hand
-    while(hand.length < 10) {
+    while(hand.length < 8) {
     const randomCard = Math.floor(Math.random() * (cards.length));
     const removedCard = cards.splice(randomCard, 1);
     hand.push(removedCard[0]);
 }
   // Sorts the cards in hand in descending order
     hand.sort((a, b) => b.value - a.value);
-}
-
-function startGame() {
-    handleDraw();
-    // Creates a list item for each card that is moved to the hand
-    populateHTML(hand, handArea);
-    startButton.classList.add('hidden');
+    deckLength.textContent = `${cards.length}/52`;
 }
 
 function handleReset () {
@@ -69,8 +70,8 @@ function handleReset () {
      } else {
         discardButton.classList.add('hidden');
      }
-    handType.textContent="";
-    played.length > 0 ? handType.textContent="High Card" : handType.textContent = "";
+    handType.textContent="Hand Type";
+    played.length > 0 ? handType.textContent="High Card" : handType.textContent = "Hand Type";
 }
 
 function grab(e) {
@@ -164,6 +165,9 @@ function removePlayed(e, removedFrom) {
     populateHTML(played, playArea);
     populateHTML(hand, handArea);
     populateHTML(discarded, discardArea);
+    if(played.length == 0) {
+        multDisplay.textContent = 0;
+    }
 }
 
 function checkHand() {
@@ -173,10 +177,7 @@ function checkHand() {
     handFunctions.checkFour(played, handType, multDisplay, pointsDisplay);
     handFunctions.checkFullHouse(played, handType, multDisplay, pointsDisplay);
     handFunctions.checkFlush(played, handType, multDisplay, pointsDisplay); 
-}
-
-function handlePlay() {
-    handFunctions.playHand(totalDisplay);
+    handFunctions.handlePoints(played, pointsDisplay);
 }
 
 function handleRemove(array) {
@@ -188,7 +189,11 @@ function handleRemove(array) {
     populateHTML(discarded, discardArea);
 }
 
-startButton.addEventListener('click', startGame);
+function handlePlay() {
+    handFunctions.handleScore(played, totalDisplay);
+}
+
+window.addEventListener('load', startGame);
 handArea.addEventListener('mousedown', grab);
 document.addEventListener('mousemove', drag);
 document.addEventListener('mouseup', drop);

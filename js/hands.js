@@ -2,24 +2,29 @@ let mult = 0;
 let points = 0;
 let total = 0;
 
-function handleScore(cards, pointsDisplay) {
-    points = cards.reduce((accumulator, card) => accumulator + card.value, 0);
-    pointsDisplay.textContent = points.toString();
+export function handlePoints(cards, pointsDisplay) {
+    points = cards.reduce((accumulator, card) => accumulator + card.value, total);
+    total + points;
+    pointsDisplay.textContent = parseInt(points);
 }
 
-export function playHand(totalDisplay) {
-    total = mult * points;
-    totalDisplay.textContent = total;
+export function handleScore(played, totalDisplay) {
+    let finalTotal = 0;
+    if(played.length == 0) {
+        finalTotal += 0;
+    } else {
+        finalTotal += (points * mult);
+    }
+    totalDisplay.textContent = finalTotal;
 }
 
-export function checkHigh(played, text, multDisplay, pointsDisplay) {
+export function checkHigh(played, text, multDisplay,) {
     if(played.length == 1) {
         console.log("High Card is played");
         text.textContent = "High Card";
         mult = 1;
         multDisplay.textContent = mult;
     }
-    handleScore(played, pointsDisplay);
 }
 
 export function checkPair(played, text, multDisplay) {
