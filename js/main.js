@@ -27,7 +27,6 @@ function startGame() {
     handleDraw();
     // Creates a list item for each card that is moved to the hand
     populateHTML(hand, handArea);
-    startButton.classList.add('hidden');
 }
 
 function populateHTML(cardArray, area) {
@@ -191,6 +190,7 @@ function handleRemove(array) {
 
 function handlePlay() {
     handFunctions.handleScore(played, totalDisplay);
+    handleRemove(played);
 }
 
 window.addEventListener('load', startGame);

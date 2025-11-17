@@ -3,10 +3,17 @@ body {
     font-family: arial, helvetica, sans-serif;
     margin-left: 25px;
     margin-right: 25px;
+    margin-top: 0;
 }
 
 .hidden {
     display: none;
+}
+
+#counts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 #scoring {
@@ -18,72 +25,150 @@ body {
     margin: 5px;
 }
 
+#scoring div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#hand-type {
+    text-align: center;
+    color: #fff;
+    background-color: #70AF89;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 15px;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
 #mult {
-    flex-row: 2;
+    width: 75px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #F75E5E;
+    border-radius: 10px;
 }
 
 #seperator {
-    font-size: 10px;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+#points {
+    margin: 0;
+    width: 200px;
+     color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #5590FE;
+    border-radius: 10px;
+}
+
+#total {
+    width: 350px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #B473E7;
+    border-radius: 10px;
+}
+
+#right-side {
+    display: flex;
+    flex-direction: column;
 }
 
 #total-container {
-    display: flex;
-    justify-content: space-between;
+    list-style: none;
+    width: 200px;
+    align-self: flex-end;
+    text-align: right;
+    background-color: #70AF89;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#total-container li {
+    margin: 5px;
+    font-weight: bold;
+}
+
+#final-total {
+    color: #fff;
+    text-align: center;
+    background-color: #70AF89;
+    width: 400px;
+    border-radius: 10px;
+    font-size: 32px;
+    font-weight: bold;
+    padding: 20px;
+    margin: 0;
 }
 
 #game-area {
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    height: 100vh;
+    height: 150px;
 }
 
 #play-background {
-    height: 150px;
+    height: 125px;
     width: 600px;
     margin-top: 16px;
     margin-bottom: 16px;
     align-self: center;
     border-radius: 10px;
-    border: 4px solid #232323;
+    background-color: #B0C8B9;
     position: absolute;
 }
 
 #play-area {
+    position: absolute;
     padding: 0;
     list-style: none;
     display: flex;
     align-self: center;
-    height: 150px;
+    align-items: center;
+    height: 125px;
     width: 600px;
     border-radius: 10px;
-    z-index: 20;
+    z-index: 20;    
 }
 
 #play-area img {
     margin: 10px;
-    width: 90px;
+    width: 70px;
     border-radius: 5px;
 }
 
 #discard-container {
     display: flex;
     flex-direction: column;
-    align-itms: center;
-    height: 300px;
+    align-items: center;
 }
 
 #discard-button {
+    text-align: center;
     margin: 0;
-    margin-bottom: 5px;
-    align-self: center;
+    margin-top: 15px;
     color: #fff;
     background-color: red;
     border: none;
     padding: 10px;
     border-radius: 5px;
-    position: absolute;
-    top: 280px;
 }
 
 #discard-button:hover {
@@ -93,16 +178,15 @@ body {
 #discard-area {
     list-style: none;
     display: flex;
-    position: absolute;
+    position: relative;
     padding: 0;
     margin: 0;
     width: 400px;
     height: 80px;
     border-radius: 5px;
-    align-self: center;
     align-items: center;
     z-index: 20;
-    top: 320px;
+    padding: 5px;
 }
 
 #discard-area img {
@@ -118,26 +202,38 @@ body {
     border-radius: 5px;
     align-self: center;
     border: 2px dashed red;
-    top: 320px;
+    padding: 5px;
 }
 
 #play-button {
-    width: 80px;
-    padding: 5px;
+    width: 100px;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
     align-self: center;
-    background-color: #232323;
+    background-color: #5590FE;
     color: #fff;
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
+}
+
+#play-button:hover {
+    cursor: pointer;
+}
+
+#play-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #hand-area {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    align-self: center;
-    justify-self: end;
     justify-content: center;
-    margin: 30px;
-    width: 1000px;
+    margin: 10px;
 }
 
 #hand-area img {
