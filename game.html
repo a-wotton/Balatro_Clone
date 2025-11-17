@@ -13,13 +13,20 @@
     <section id="counts">
         <div id="scoring">
             <h1 id="hand-type">Hand Type</h1>
-            <p id="mult">0</p>
-            <p id="seperator">X</p>
-            <p id="points">0</p>
+            <div>
+                <p id="mult">0</p>
+                <p id="seperator">X</p>
+                <p id="points">0</p>
+            </div>
             <p id="total">0</p> 
         </div>
-        <div id="total-container">
-            <p>Deck: <span id="deck-length">52/52</span></p>
+        <div id="right-side">
+            <ul id="total-container">
+                <li>Deck: <span id="deck-length">52/52</span></li>
+                <li>Hands: <span id="hands-remaining">5/5</span></li>
+                <li>Discards: <span id="discards-remaining">3/3</span></li>
+            </ul>
+            <p id="final-total">0</p>
         </div>
     </section>
 
@@ -28,17 +35,22 @@
         <ul id="play-area">
             <!-- Played cards are inserted here -->
         </ul>
-        <div id="discard-container">
-            <div id="discard-background"></div>
-            <ul id="discard-area">
-                <!-- Discarded cards are inserted here -->
-            </ul>
-            <button id="discard-button" class="hidden">Discard</button>
-        </div>
+    </section>
+
+    <section id="play-zone">
         <button id="play-button" class="hidden">Play</button>
-        <ul id="hand-area">
-            <!-- Player's hand shows here -->
+
+            <ul id="hand-area">
+                <!-- Player's hand shows here -->
+            </ul>
+    </section>
+
+    <section id="discard-container">
+        <div id="discard-background"></div>
+        <ul id="discard-area">
+            <!-- Discarded cards are inserted here -->
         </ul>
+         <button id="discard-button" class="hidden">Discard</button>
     </section>
 </body>
 </html>
