@@ -1,3 +1,5 @@
+const goScore = document.querySelector('#go-score');
+
 let mult = 0;
 let points = 0;
 let total = 0;
@@ -19,6 +21,7 @@ export function handleScore(played, totalDisplay, grandTotalDisplay) {
     totalDisplay.textContent = finalTotal;
     grandTotal += finalTotal;
     grandTotalDisplay.textContent = grandTotal;
+    goScore.textContent = grandTotal;
 }
 
 export function checkHigh(played, text, multDisplay,) {

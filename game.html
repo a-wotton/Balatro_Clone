@@ -10,6 +10,12 @@
     <script defer type = module src="js/main.js"></script>
 </head>
 <body>
+    <div id="darkout" class="hidden"></div>
+    <div id="game-over" class="hidden">
+        <h2>Game Over!</h2>
+        <p>Score: <span id="go-score"></span></p>
+        <a href="index.html">Main Menu</a>
+    </div>
     <section id="counts">
         <div id="scoring">
             <h1 id="hand-type">Hand Type</h1>
@@ -31,7 +37,9 @@
     </section>
 
     <section id="game-area">
-        <div id="play-background"></div>
+        <div id="play-background">
+            <p id="hand-size">0/5</p>
+        </div>
         <ul id="play-area">
             <!-- Played cards are inserted here -->
         </ul>
@@ -46,7 +54,9 @@
     </section>
 
     <section id="discard-container">
-        <div id="discard-background"></div>
+        <div id="discard-background">
+            <p id="discard-size">0/5</p>
+        </div>
         <ul id="discard-area">
             <!-- Discarded cards are inserted here -->
         </ul>
