@@ -6,6 +6,7 @@ const discardButton = document.querySelector('#discard-button')
 const multDisplay = document.querySelector('#mult');
 const pointsDisplay = document.querySelector('#points');
 const totalDisplay = document.querySelector('#total');
+const grandTotalDisplay = document.querySelector('#final-total')
 const deckLength = document.querySelector('#deck-length');
 const played = [];
 const hand = [];
@@ -13,9 +14,14 @@ const discarded = [];
 const removed = [];
 const handArea = document.querySelector('#hand-area');
 const playArea = document.querySelector('#play-area');
-const discardArea = document.querySelector('#discard-area')
+const discardArea = document.querySelector('#discard-area');
+const discardBackground = document.querySelector('#discard-background');
 const handType = document.querySelector('#hand-type');
+const remainingHandsDisplay = document.querySelector('#hands-remaining');
+const remainingDiscardsDisplay = document.querySelector('#discards-remaining');
 let cardX = 0, cardY = 0, lastX = 0, lastY = 0;
+let remainingHands = 5;
+let remainingDiscards = 3;
 let isDragged = false;
 let isOver = false;
 let isOverDiscard = false;
@@ -114,7 +120,7 @@ function drop() {
         populateHTML(hand, handArea);
         populateHTML(discarded, discardArea);
         // The elseif handles discards rather than plays
-    } else if(isOverDiscard && isDragged == true && discarded.length < 5 && played.length == 0) {
+    } else if(isOverDiscard && isDragged == true && discarded.length < 5 && played.length == 0 && remainingDiscards > 0) {
         const droppedCard = hand.findIndex(card => card.suit == suit && card.value == value);
         const removedCard = hand.splice(droppedCard, 1);
         discarded.push(removedCard[0]);
@@ -189,8 +195,25 @@ function handleRemove(array) {
 }
 
 function handlePlay() {
-    handFunctions.handleScore(played, totalDisplay);
-    handleRemove(played);
+    if(remainingHands > 0) {
+        handFunctions.handleScore(played, totalDisplay, grandTotalDisplay);
+        handleRemove(played);
+        remainingHands -= 1;
+        remainingHandsDisplay.textContent = `${remainingHands}/5`;
+    } else {
+        remainingHandsDisplay.textContent = "0/5";
+    }
+}
+
+function handleDiscard() {
+    handleRemove(discarded);
+    remainingDiscards -= 1;
+    if(remainingDiscards > 0) {
+        remainingDiscardsDisplay.textContent = `${remainingDiscards}/3`;
+    } else {
+        remainingDiscardsDisplay.textContent = "0/3";
+        discardBackground.classList.add('crossed');
+    }
 }
 
 window.addEventListener('load', startGame);
@@ -204,6 +227,6 @@ discardArea.addEventListener('mouseenter', () => {isOverDiscard = true;});
 discardArea.addEventListener('mouseleave', () => {isOverDiscard = false;});
 discardArea.addEventListener('click', (e) => {removePlayed(e, discarded)});
 playButton.addEventListener('click', handlePlay);
-discardButton.addEventListener('click', () => {handleRemove(discarded)});
+discardButton.addEventListener('click', handleDiscard);
 
 export default played;

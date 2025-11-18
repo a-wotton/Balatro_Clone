@@ -1,6 +1,7 @@
 let mult = 0;
 let points = 0;
 let total = 0;
+let grandTotal = 0;
 
 export function handlePoints(cards, pointsDisplay) {
     points = cards.reduce((accumulator, card) => accumulator + card.value, total);
@@ -8,7 +9,7 @@ export function handlePoints(cards, pointsDisplay) {
     pointsDisplay.textContent = parseInt(points);
 }
 
-export function handleScore(played, totalDisplay) {
+export function handleScore(played, totalDisplay, grandTotalDisplay) {
     let finalTotal = 0;
     if(played.length == 0) {
         finalTotal += 0;
@@ -16,6 +17,8 @@ export function handleScore(played, totalDisplay) {
         finalTotal += (points * mult);
     }
     totalDisplay.textContent = finalTotal;
+    grandTotal += finalTotal;
+    grandTotalDisplay.textContent = grandTotal;
 }
 
 export function checkHigh(played, text, multDisplay,) {

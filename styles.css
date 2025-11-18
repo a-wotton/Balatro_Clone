@@ -205,6 +205,12 @@ body {
     padding: 5px;
 }
 
+.crossed {
+    background-image: url('./images/cross.png');
+    background-size: 100% 100%;
+    background-position: center;
+}
+
 #play-button {
     width: 100px;
     font-size: 14px;
