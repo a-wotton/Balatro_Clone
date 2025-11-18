@@ -10,6 +10,98 @@ body {
     display: none;
 }
 
+#darkout {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #454545;
+    z-index: 30;
+    opacity: 80%;
+}
+
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    text-align: center;
+    background-color: #F75E5E;
+    color: #fff;
+    border-radius: 15px;
+    z-index: 40;
+    padding: 30px;
+}
+
+#game-over h2 {
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0;
+}
+
+#game-over p {
+    font-size: 24px;
+}
+
+#game-over a {
+    width: 250px;
+    border-radius: 10px;
+    font-size: 18px;
+    text-decoration: none;
+    border: #fff solid 1px;
+    color: #fff;
+    background-color: #F75E5E;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+#game-over a:hover {
+    cursor: pointer;
+}
+
+#home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-intro {
+    color: #fff;
+    text-align: center;
+    background-color: #5590FE;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    width: 800px;
+}
+
+#options {
+    list-style: none;
+}
+
+#options li {
+    text-align: center;
+    border-radius: 20px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+}
+
+#options li a {
+    flex-grow: 1;
+    color: #fff;
+    background-color: #70AF89;
+    padding: 20px;
+    margin-top: 25px;
+    font-size: 32px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 15px;
+}
+
 #counts {
     display: flex;
     flex-wrap: wrap;
@@ -135,6 +227,16 @@ body {
     position: absolute;
 }
 
+#play-background p {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 15px;
+}
+
 #play-area {
     position: absolute;
     padding: 0;
@@ -165,7 +267,7 @@ body {
     margin: 0;
     margin-top: 15px;
     color: #fff;
-    background-color: red;
+    background-color: #F75E5E;
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -201,8 +303,18 @@ body {
     height: 80px;
     border-radius: 5px;
     align-self: center;
-    border: 2px dashed red;
+    border: 2px dashed #F75E5E;
     padding: 5px;
+}
+
+#discard-size {
+    color: #F75E5E;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
 }
 
 .crossed {

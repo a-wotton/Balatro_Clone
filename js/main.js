@@ -2,11 +2,15 @@ import cards from "./cards.js";
 import * as handFunctions from "./hands.js";
 
 const playButton = document.querySelector('#play-button');
-const discardButton = document.querySelector('#discard-button')
+const discardButton = document.querySelector('#discard-button');
 const multDisplay = document.querySelector('#mult');
 const pointsDisplay = document.querySelector('#points');
 const totalDisplay = document.querySelector('#total');
-const grandTotalDisplay = document.querySelector('#final-total')
+const grandTotalDisplay = document.querySelector('#final-total');
+const handSizeDisplay = document.querySelector('#hand-size');
+const discardSizeDisplay = document.querySelector('#discard-size');
+const darkout = document.querySelector('#darkout');
+const goModal = document.querySelector('#game-over');
 const deckLength = document.querySelector('#deck-length');
 const played = [];
 const hand = [];
@@ -107,7 +111,7 @@ function drag(e) {
 
 function drop() {
     // isOver is in the event listener for the playArea. The if statement ensures that this part of the function only activates if the drop is performed over the playArea
-    if(isOver && isDragged == true && played.length < 5) {
+    if(isOver && isDragged == true && played.length < 5 && discarded.length == 0) {
         // Finds the array element that matches both the suit and the value of the card we selected using the dataset of the HTML list item. It is then transferred to the played array
         const droppedCard = hand.findIndex(card => card.suit == suit && card.value == value);
         const removedCard = hand.splice(droppedCard, 1);
@@ -119,8 +123,9 @@ function drop() {
         populateHTML(played, playArea);
         populateHTML(hand, handArea);
         populateHTML(discarded, discardArea);
+        handSizeDisplay.textContent = `${played.length}/5`;
         // The elseif handles discards rather than plays
-    } else if(isOverDiscard && isDragged == true && discarded.length < 5 && played.length == 0 && remainingDiscards > 0) {
+    } else if(isOverDiscard && isDragged == true && discarded.length < 5 && played.length == 0 && remainingDiscards > 0 && played.length == 0) {
         const droppedCard = hand.findIndex(card => card.suit == suit && card.value == value);
         const removedCard = hand.splice(droppedCard, 1);
         discarded.push(removedCard[0]);
@@ -131,6 +136,7 @@ function drop() {
         populateHTML(played, playArea);
         populateHTML(hand, handArea);
         populateHTML(discarded, discardArea);
+        discardSizeDisplay.textContent = `${discarded.length}/5`;
     } else {
         // This quickly resets the hand when a card is dropped outside the play area, allowing the cards to realign properly
         setTimeout(() => {
@@ -170,6 +176,8 @@ function removePlayed(e, removedFrom) {
     populateHTML(played, playArea);
     populateHTML(hand, handArea);
     populateHTML(discarded, discardArea);
+    handSizeDisplay.textContent = `${played.length}/5`;
+    discardSizeDisplay.textContent = `${discarded.length}/5`;
     if(played.length == 0) {
         multDisplay.textContent = 0;
     }
@@ -200,9 +208,14 @@ function handlePlay() {
         handleRemove(played);
         remainingHands -= 1;
         remainingHandsDisplay.textContent = `${remainingHands}/5`;
-    } else {
-        remainingHandsDisplay.textContent = "0/5";
-    }
+        handSizeDisplay.textContent = '0/5'
+        if(remainingHands == 0) {
+            remainingHandsDisplay.textContent = "0/5";
+            darkout.classList.remove('hidden');
+            goModal.classList.remove('hidden');
+            goScore.textContent = grandTotal;
+        }
+    } 
 }
 
 function handleDiscard() {
@@ -210,6 +223,7 @@ function handleDiscard() {
     remainingDiscards -= 1;
     if(remainingDiscards > 0) {
         remainingDiscardsDisplay.textContent = `${remainingDiscards}/3`;
+        discardSizeDisplay.textContent = '0/5';
     } else {
         remainingDiscardsDisplay.textContent = "0/3";
         discardBackground.classList.add('crossed');
