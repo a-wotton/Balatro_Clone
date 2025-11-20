@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    font-family: arial, helvetica, sans-serif;
+}
+
+.game-header {
+    color: #fff;
+    background-color: #5590FE;
+    display: flex;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.game-header h1 {
+        flex-basis: 100%;
+}
+
+.game-header a {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    border: solid 2px #fff;
+    border-radius: 15px;
+    align-self: center;
+    justify-self: flex-end;
+    width: 100px;
+}
+
+#hands-intro li {
+    font-size: 18px;
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+#hands-intro p {
+    font-size: 24px;
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+#poker-hands {
+    margin: 25px;
+}
+
+#poker-hands ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hand {
+    width: 50%;
+}
+
+.hand-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.hand-mult {
+    color: #F75E5E;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.hand img {
+    width: 600px;
+}
+
+.hand-desc {
+    font-size: 18px;
+    margin-top: 5px;
+    width: 600px;
+}
