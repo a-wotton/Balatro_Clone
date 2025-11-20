@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: arial, helvetica, sans-serif;
+    font-size: 18px;
 }
 
 .game-header {
@@ -27,8 +28,31 @@ body {
     width: 100px;
 }
 
+#rules-intro {
+    margin: 25px;
+}
+
+#rules-intro ul {
+    width: 60%;
+    list-style: none;
+    padding-left: 0;
+}
+
+#rules-intro img {
+    width: 80%;
+    border: #5590FE 2px solid;
+}
+
+#rules-con h2 {
+    margin-left: 25px;
+}
+
+#rules-con ul {
+    margin-bottom: 50px;
+    width: 60%;
+}
+
 #hands-intro li {
-    font-size: 18px;
     width: 60%;
     margin-bottom: 20px;
 }
@@ -36,7 +60,7 @@ body {
 #hands-intro p {
     font-size: 24px;
     margin-left: 25px;
-    font-weight: bold;
+    font-weight: bold; 
 }
 
 #poker-hands {
