@@ -68,40 +68,6 @@ body {
     align-items: center;
 }
 
-#game-intro {
-    color: #fff;
-    text-align: center;
-    background-color: #5590FE;
-    padding: 25px;
-    border-radius: 15px;
-    margin-top: 20px;
-    width: 800px;
-}
-
-#options {
-    list-style: none;
-}
-
-#options li {
-    text-align: center;
-    border-radius: 20px;
-    width: 400px;
-    display: flex;
-    justify-content: center;
-}
-
-#options li a {
-    flex-grow: 1;
-    color: #fff;
-    background-color: #70AF89;
-    padding: 20px;
-    margin-top: 25px;
-    font-size: 32px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 15px;
-}
-
 #counts {
     display: flex;
     flex-wrap: wrap;

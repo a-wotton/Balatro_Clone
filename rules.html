@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Rules</title>
+    <link rel="stylesheet" href="css/hands.css">
+</head>
+<body>
+    <header class="game-header">
+        <h1>Game Rules</h1>
+    </header>
+    <section id="rules-intro">
+        <ul>
+            <li><p>The goal of the game is to make poker hands, (pairs, full house, flush... etc.) using a standard deck of cards, in an attempt to score the highest amount of points possible. </p></li>
+            <li><p>Here is a quick overview of the game’s HUD, so you can understand what each component represents.</p></li>
+        </ul>
+        <img src="images/hud_breakdown.png" alt="image of the game's hud">
+    </section>
+    <main id="rules-con">
+        <h2>Scoring</h2>
+        <ul>
+            <li><p>Scoring works as follows: every time you play a hand, points are accumulated and then multiplied by a set multiplier, giving you the score for your played hand. The score for that hand is then added to your overall total score.</p></li>
+            <li><p>You can use anywhere between 1 and 5 cards in your hand to create a poker hand. You do so by dragging the desired cards into the play area.</p></li>
+            <li><p>In a hand, each card is worth between 2-14 points. Numbered cards are worth the number depicted on the card; Jacks - 11, Queens - 12, Kings - 13 and Aces - 14. Playing higher cards scores higher points, and playing more cards gives more points. Try aiming for larger hands, like a full house for example, as it uses 5 cards.</p></li>
+            <li><p>Each poker hand has a set multiplier, which is higher according to the poker hand hierarchy – the more difficult the hand is to build, the more it is worth by its multiplier (see hand types page for more details on the hierarchy and exactly what multiplier each hand provides.)</p></li>
+            <li><p>Every game you start with 5 hands, and once you play all five the game is over, and you get your final score.</p></li>
+            <li><p>The amount of remaining hands are tracked in the top right.</p></li>
+        </ul>
+        <h2>Discards</h2>
+        <ul>
+            <li><p>The key to getting high scoring poker hands is to use discards wisely in order to build up to certain hands.</p></li>
+            <li><p>You start each game with 3 discards, and you can perform one by dragging up to 5 cards into the discard area and then clicking the discard button that appears.</p></li>
+            <li><p>Discarded cards are removed from the game entirely, and will automatically draw cards from your deck to replace the discarded ones. (Ex. Discarding 5 cards will get you five new cards).</p></li>
+            <li><p>The amount of discards you can perform are tracked in the top right.</p></li>
+        </ul>
+    </main>
+</body>
+</html>
