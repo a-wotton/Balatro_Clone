@@ -1,4 +1,6 @@
 const goScore = document.querySelector('#go-score');
+const goHighScore = document.querySelector('#go-high-score');
+const newBest = document.querySelector('#new-best');
 
 let mult = 0;
 let points = 0;
@@ -13,15 +15,18 @@ export function handlePoints(cards, pointsDisplay) {
 
 export function handleScore(played, totalDisplay, grandTotalDisplay) {
     let finalTotal = 0;
-    if(played.length == 0) {
-        finalTotal += 0;
-    } else {
+    if(played.length > 0) {
         finalTotal += (points * mult);
     }
     totalDisplay.textContent = finalTotal;
     grandTotal += finalTotal;
     grandTotalDisplay.textContent = grandTotal;
     goScore.textContent = grandTotal;
+    if(grandTotal > localStorage.getItem('goHighScore') || !localStorage.getItem('goHighScore')) {
+        localStorage.setItem('goHighScore', grandTotal);
+        newBest.classList.remove('hidden');
+    }
+    goHighScore.textContent = localStorage.getItem('goHighScore');
 }
 
 export function checkHigh(played, text, multDisplay,) {

@@ -1,6 +1,7 @@
 import cards from "./cards.js";
 import * as handFunctions from "./hands.js";
 
+const menuButton = document.querySelector('#menu-button')
 const playButton = document.querySelector('#play-button');
 const discardButton = document.querySelector('#discard-button');
 const multDisplay = document.querySelector('#mult');
@@ -37,6 +38,12 @@ function startGame() {
     handleDraw();
     // Creates a list item for each card that is moved to the hand
     populateHTML(hand, handArea);
+}
+
+function leaveGame() {
+    if(window.confirm("Are you sure you want to leave? All progress will be lost.")) {
+        window.open('index.html', '_self');
+    }
 }
 
 function populateHTML(cardArray, area) {
@@ -231,6 +238,7 @@ function handleDiscard() {
 }
 
 window.addEventListener('load', startGame);
+menuButton.addEventListener('click', leaveGame);
 handArea.addEventListener('mousedown', grab);
 document.addEventListener('mousemove', drag);
 document.addEventListener('mouseup', drop);
