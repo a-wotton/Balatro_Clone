@@ -46,7 +46,7 @@ export function checkPair(played, text, multDisplay) {
     if(played.length == 2 && played[0].value == played[1].value) {
         console.log("Pair is played");
         text.textContent = "Pair";
-        mult = 1.5;
+        mult = 2;
         multDisplay.textContent = mult;
     }
 }
@@ -55,7 +55,7 @@ export function checkThree(played, text, multDisplay) {
     if(played.length == 3 && played.every(card => card.value == played[0].value)) {
         console.log("Three of a Kind is played");
         text.textContent = "Three of a Kind";
-        mult = 2.5;
+        mult = 3;
         multDisplay.textContent = mult;
     }
 }
@@ -64,7 +64,7 @@ export function checkFour(played, text, multDisplay) {
     if(played.length == 4 && played.every(card => card.value == played[0].value)) {
         console.log("Four of a Kind is played");
         text.textContent = "Four of a Kind";
-        mult = 3.5;
+        mult = 7;
         multDisplay = mult;
     } else if(played.length == 4 && played[0].value == played[1].value && played[2].value == played[3].value) {
         console.log("Two Pair is played");
@@ -83,7 +83,7 @@ export function checkFullHouse(played, text, multDisplay) {
     if(isFullHouse) {
         console.log("Full House is played");
         text.textContent = "Full House";
-        mult = 3;
+        mult = 4;
         multDisplay.textContent = mult;
     }
 }
@@ -98,22 +98,22 @@ export function checkFlush(played, text, multDisplay) {
     if(isFlush && isRoyal) {
         console.log("Royal Flush is Played");
         text.textContent = "Royal Flush";
-        mult = 5;
+        mult = 10;
         multDisplay.textContent = mult;
     } else if(isFlush && isStraight) {
         console.log("Straight Flush is played");
         text.textContent = "Straight Flush";
-        mult = 4;
+        mult = 8;
         multDisplay.textContent = mult;
     } else if(isStraight) {
         console.log("Straight is played");
         text.textContent = "Straight";
-        mult = 2.5;
+        mult = 4;
         multDisplay.textContent = mult;
     } else if(isFlush) {
         console.log("Flush is played");
         text.textContent = "Flush";
-        mult = 2;
+        mult = 4;
         multDisplay.textContent = mult;
     }
 }
