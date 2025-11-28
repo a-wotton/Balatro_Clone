@@ -124,7 +124,7 @@ body {
     margin: 5px;
 }
 
-#scoring div {
+#score-details {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -142,15 +142,20 @@ body {
 }
 
 #mult {
-    width: 75px;
     color: #fff;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
+}
+
+#mult-con {
+    width: 75px;
+    height: 52px;
     background-color: #F75E5E;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #seperator {
@@ -160,15 +165,20 @@ body {
 
 #points {
     margin: 0;
-    width: 200px;
-     color: #fff;
+    color: #fff;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
+}
+
+#points-con {
+    width: 200px;
+    height: 52px;
     background-color: #5590FE;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #total {

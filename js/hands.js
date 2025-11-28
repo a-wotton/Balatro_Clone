@@ -10,10 +10,12 @@ let grandTotal = 0;
 export function handlePoints(cards, pointsDisplay) {
     points = cards.reduce((accumulator, card) => accumulator + card.value, total);
     total + points;
-    pointsDisplay.textContent = parseInt(points);
+    setTimeout(() => {
+        pointsDisplay.textContent = parseInt(points);
+    }, 150);
 }
 
-export function handleScore(played, totalDisplay, grandTotalDisplay) {
+export function handleScore(played, multDisplay, totalDisplay, grandTotalDisplay) {
     let finalTotal = 0;
     if(played.length > 0) {
         finalTotal += (points * mult);
@@ -27,6 +29,8 @@ export function handleScore(played, totalDisplay, grandTotalDisplay) {
         newBest.classList.remove('hidden');
     }
     goHighScore.textContent = localStorage.getItem('goHighScore');
+    mult = 0;
+    multDisplay.textContent = mult;
 }
 
 export function checkHigh(played, text, multDisplay,) {

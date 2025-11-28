@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Playing Cards</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script defer type="module" src="js/cards.js"></script>
     <script defer type="module" src="js/hands.js"></script>
-    <script defer type = module src="js/main.js"></script>
+    <script defer type="module" src="js/main.js"></script>
 </head>
 <body>
     <div id="darkout" class="hidden"></div>
@@ -21,10 +22,10 @@
     <section id="counts">
         <div id="scoring">
             <h1 id="hand-type">Hand Type</h1>
-            <div>
-                <p id="mult">0</p>
+            <div id="score-details">
+                <div id="mult-con"><p id="mult">0</p></div>
                 <p id="seperator">X</p>
-                <p id="points">0</p>
+                <div id="points-con"><p id="points">0</p></div>
             </div>
             <p id="total">0</p> 
         </div>
@@ -35,9 +36,9 @@
         </section>
         <div id="right-side">
             <ul id="total-container">
-                <li>Deck: <span id="deck-length">52/52</span></li>
-                <li>Hands: <span id="hands-remaining">5/5</span></li>
-                <li>Discards: <span id="discards-remaining">3/3</span></li>
+                <li id="deck-length-con">Deck: <span id="deck-length">52/52</span></li>
+                <li id="hand-length-con">Hands: <span id="hands-remaining">5/5</span></li>
+                <li id="discard-length-con">Discards: <span id="discards-remaining">3/3</span></li>
             </ul>
             <p id="final-total">0</p>
         </div>
