@@ -73,6 +73,9 @@ function handleDraw() {
   // Sorts the cards in hand in descending order
     hand.sort((a, b) => b.value - a.value);
     deckLength.textContent = `${cards.length}/52`;
+    var deckLengthTL = gsap.timeline();
+    deckLengthTL.to('#deck-length-con', {x: -40, duration: 0.2, ease:Power1.out})
+    .to('#deck-length-con', {x: 0, duration: 0.2, ease:Power1.out})
 }
 
 function handleReset () {
@@ -153,7 +156,7 @@ function drop() {
             populateHTML(played, playArea);
             populateHTML(hand, handArea);
             populateHTML(discarded, discardArea);
-        }, 10);
+        }, 1);
     }
         if(movedCard) {
     movedCard.style.left = 0 + 'px';
@@ -198,6 +201,15 @@ function checkHand() {
     handFunctions.checkFullHouse(played, handType, multDisplay, pointsDisplay);
     handFunctions.checkFlush(played, handType, multDisplay, pointsDisplay); 
     handFunctions.handlePoints(played, pointsDisplay);
+    var tl = gsap.timeline({
+        defaults: {duration: 0.1, ease: Power1.out}
+    });
+    if(discarded.length == 0) {
+        tl.to('#mult', {y: -20})
+        .to('#mult', {y: 0})
+        .to('#points', {y: -20})
+        .to('#points', {y: 0});
+    }
 }
 
 function handleRemove(array) {
@@ -211,11 +223,19 @@ function handleRemove(array) {
 
 function handlePlay() {
     if(remainingHands > 0) {
-        handFunctions.handleScore(played, totalDisplay, grandTotalDisplay);
+        handFunctions.handleScore(played, multDisplay, totalDisplay, grandTotalDisplay);
         handleRemove(played);
         remainingHands -= 1;
         remainingHandsDisplay.textContent = `${remainingHands}/5`;
-        handSizeDisplay.textContent = '0/5'
+        handSizeDisplay.textContent = '0/5';
+        var handLengthTL = gsap.timeline();
+        handLengthTL.to('#hand-length-con', {x:-40, duration: 0.2, ease: Power1.out})
+        .to('#hand-length-con', {x:0, duration: 0.2, ease: Power1.out})
+        var totalTL = gsap.timeline({defaults: {duration: 0.1, ease: Power1.out}});
+        totalTL.to('#total', {y: -20})
+        .to('#total', {y: 0})
+        .to('#final-total', {y: -20})
+        .to('#final-total', {y: 0});
         if(remainingHands == 0) {
             remainingHandsDisplay.textContent = "0/5";
             darkout.classList.remove('hidden');
@@ -235,6 +255,9 @@ function handleDiscard() {
         remainingDiscardsDisplay.textContent = "0/3";
         discardBackground.classList.add('crossed');
     }
+    var discardLengthTL = gsap.timeline();
+    discardLengthTL.to('#discard-length-con', {x: -40, duration: 0.2, ease: Power1.out})
+    .to('#discard-length-con', {x: 0, duration: 0.2, ease: Power1.out});
 }
 
 window.addEventListener('load', startGame);
